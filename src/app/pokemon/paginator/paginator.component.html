@@ -1,0 +1,7 @@
+<!-- paginator.component.html -->
+<div class="paginator">
+    <button (click)="onPageChange(currentPage - 1)" [disabled]="currentPage === 1">Previous</button>
+      <button>{{ currentPage }}</button>
+    <button (click)="onPageChange(currentPage + 1)" [disabled]="currentPage === totalPages">Next</button>
+  </div>
+  

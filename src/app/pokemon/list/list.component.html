@@ -1,0 +1,11 @@
+<div class="pokemon-grid">
+    <div *ngFor="let pokemon of pokemonList" class="pokemon-card " [routerLink]="[ '/detail',pokemon?.id]">
+      <div>
+        <img [src]="pokemon.detail?.sprites?.other?.dream_world?.front_default" alt="{{ pokemon.name }}">
+      </div>
+      <p>{{ pokemon.name | titlecase}}</p>
+    </div>
+  </div>
+  <div class="paginator">
+    <paginator [totalItems]="pokemonData?.count" [itemsPerPage]="12" (pageChange)="pageChange($event)"></paginator>
+  </div>

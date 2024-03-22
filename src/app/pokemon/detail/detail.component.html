@@ -1,0 +1,34 @@
+<div class="tabs">
+    <button (click)="tab = 'details'" [class.active]="tab === 'details'">Details</button>
+    <button (click)="tab = 'evolution'" [class.active]="tab === 'evolution'">Evolution</button>
+  </div>
+
+  <div *ngIf="tab === 'details'" class="tab-content">
+    <div class="pokemon-card ">
+      <div>
+        <img [src]="pokemonDetails?.sprites?.other?.dream_world?.front_default" alt="{{ pokemonDetails?.name }}">
+        <h2>{{ pokemonDetails?.name | titlecase }}</h2>
+
+      </div>
+    </div>
+    <!-- Display other details about the Pokemon -->
+  </div>
+  
+  <div *ngIf="tab === 'evolution'" class="tab-content">
+    <h2>Evolution</h2>
+    <div style="display: flex;">
+      <div *ngFor="let stage of pokemonEvolution; let last = last" style="display: flex;width: 30%;">
+        <div class="pokemon-card" [class.active]="pokemonDetails?.name === stage?.species?.name">
+          <div>
+            <img [src]="stage?.detail?.sprites?.other?.dream_world?.front_default" alt="{{ stage?.species?.name }}">
+          </div>
+          <p>{{ stage?.species?.name | titlecase }}</p>
+        </div>
+        <ng-container >
+          <div style="margin-top: 20%;" ><span *ngIf="!last">{{'============>'}}</span></div>
+        </ng-container>
+      </div>
+    </div>
+   
+    
+  </div>
